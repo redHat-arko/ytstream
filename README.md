@@ -48,9 +48,12 @@ More examples:
 `freeMusic playlist.txt https://www.youtube.com/watch?v=DmWWqogr_r8 https://www.youtube.com/watch?v=VPRjCeoBqr`
 
 ## Release
+
+The latest release can be found here:
+
 File|Description
 :---|:---
-[freeMusic.exe](https://github.com/redHat-arko/freeMusic/releases/download/v1.0/freeMusic.exe)|Windows (Win7 SP1+) standalone x64 binary
+[freeMusic.exe](https://github.com/redHat-arko/freeMusic/releases/download/v1.1/freeMusic.exe)|Windows (Win7 SP1+) standalone x64 binary
 
 ## Known Issues
 
