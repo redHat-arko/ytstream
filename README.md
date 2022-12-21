@@ -50,7 +50,7 @@ More examples:
 ## Release
 File|Description
 :---|:---
-[freeMusic.exe](https://github.com/redHat-arko/freeMusic/releases/download/v1.0/freeMusic.exe)|Windows (Win7 SP1+) standalone x64 binary (recommended for **Windows**)
+[freeMusic.exe](https://github.com/redHat-arko/freeMusic/releases/download/v1.0/freeMusic.exe)|Windows (Win7 SP1+) standalone x64 binary
 
 ## Known Issues
 
