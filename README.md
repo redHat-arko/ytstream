@@ -42,7 +42,9 @@ and added to `PATH`.
 More examples:
 
 `freeMusic https://www.youtube.com/watch?v=DmWWqogr_r8`
+
 `freeMusic https://www.youtube.com/watch?v=DmWWqogr_r8 https://www.youtube.com/watch?v=VPRjCeoBqr`
+
 `freeMusic playlist.txt https://www.youtube.com/watch?v=DmWWqogr_r8 https://www.youtube.com/watch?v=VPRjCeoBqr`
 
 ## Release
