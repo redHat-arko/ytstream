@@ -9,10 +9,6 @@ class URLGetter:
         ydl_opts = {
             'format': 'bestaudio',
             'quiet': 'true',
-            # 'lazy_playlist': 'true',
-            # 'postprocessors': [{  # Extract audio using ffmpeg
-            #     'key': 'FFmpegExtractAudio',
-            # }]
         }
 
         stream_url = None
