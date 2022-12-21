@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QApplication, QHBoxLayout, QLabel, QPushButton, QSlider, QVBoxLayout, QWidget
 import vlc
+import time
 
 
 class VLCPlayer(QWidget):
