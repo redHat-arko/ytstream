@@ -1,7 +1,7 @@
 # ytstream
 Tired of ads on YouTube while listening to music? Look no further. ytstream is a music streaming application that enables ad-free music streaming from YouTube.
 
-## Why use ystream
+## Why use ytstream
 While [yt-dlp](https://github.com/yt-dlp/yt-dlp) and other similar applications enable downloading from YouTube, streaming is an entriely different issue. 
 With ytstream, it is now possible to stream audio ad-free from YouTube.
 
