@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/freeMusic.iml" filepath="$PROJECT_DIR$/.idea/freeMusic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ytstream.iml" filepath="$PROJECT_DIR$/.idea/ytstream.iml" />
     </modules>
   </component>
 </project>

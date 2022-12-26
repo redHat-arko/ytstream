@@ -4,7 +4,7 @@ import player
 from PyQt5.QtWidgets import QApplication
 
 
-class FreeMusic:
+class YTStream:
     def __init__(self, urls):
         self.urls = urls
 
@@ -41,7 +41,7 @@ class FreeMusic:
 
 def main():
     urls = sys.argv[1:]
-    music = FreeMusic(urls)
+    music = YTStream(urls)
     music.play()
 
 
