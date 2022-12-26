@@ -1,9 +1,9 @@
-# FreeMusic
-Tired of ads on YouTube while listening to music? Look no further. FreeMusic is a music streaming application that enables ad-free music streaming from YouTube.
+# ytstream
+Tired of ads on YouTube while listening to music? Look no further. ytstream is a music streaming application that enables ad-free music streaming from YouTube.
 
-## Why use FreeMusic
+## Why use ystream
 While [yt-dlp](https://github.com/yt-dlp/yt-dlp) and other similar applications enable downloading from YouTube, streaming is an entriely different issue. 
-With FreeMusic, it is now possible to stream audio ad-free from YouTube.
+With ytstream, it is now possible to stream audio ad-free from YouTube.
 
 ## Features
 * Ad-free audio streaming from YouTube at the highest possible quality supported by YouTube (stereo `OPUS` or `AAC`)
@@ -23,11 +23,11 @@ Requires [VLC](https://www.videolan.org/vlc) to be installed and added to `PATH`
 
 All of these usages and their combinations are valid
 
-`freeMusic URL`
+`ytstream URL`
 
-`freeMusic [URL...]`
+`ytstream [URL...]`
 
-`freeMusic <text file>`
+`ytstream <text file>`
 
 The text file needs to be formatted with each YouTube link on a new line.
 
@@ -41,11 +41,11 @@ and added to `PATH`.
 
 More examples:
 
-`freeMusic https://www.youtube.com/watch?v=DmWWqogr_r8`
+`ytstream https://www.youtube.com/watch?v=DmWWqogr_r8`
 
-`freeMusic https://www.youtube.com/watch?v=DmWWqogr_r8 https://www.youtube.com/watch?v=VPRjCeoBqr`
+`ytstream https://www.youtube.com/watch?v=DmWWqogr_r8 https://www.youtube.com/watch?v=VPRjCeoBqr`
 
-`freeMusic playlist.txt https://www.youtube.com/watch?v=DmWWqogr_r8 https://www.youtube.com/watch?v=VPRjCeoBqr`
+`ytstream playlist.txt https://www.youtube.com/watch?v=DmWWqogr_r8 https://www.youtube.com/watch?v=VPRjCeoBqr`
 
 ## Release
 
@@ -53,7 +53,7 @@ The latest release can be found here:
 
 File|Description
 :---|:---
-[freeMusic.exe](https://github.com/redHat-arko/freeMusic/releases/download/v1.1/freeMusic.exe)|Windows (Win7 SP1+) standalone x64 binary
+[ytstream.exe](https://github.com/redHat-arko/ytstream/releases/download/v1.1/ytstream.exe)|Windows (Win7 SP1+) standalone x64 binary
 
 ## Known Issues
 
