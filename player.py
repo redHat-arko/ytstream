@@ -21,7 +21,7 @@ class VLCPlayer(QWidget):
         self.create_ui()
 
     def create_ui(self):
-        self.setWindowTitle("FreeMusic")
+        self.setWindowTitle("YTStream")
 
         self.setGeometry(100, 100, 400, 300)
 
