@@ -3,7 +3,6 @@ import url_getter
 import player
 from PyQt5.QtWidgets import QApplication
 
-
 class YTStream:
     def __init__(self, urls):
         self.urls = urls

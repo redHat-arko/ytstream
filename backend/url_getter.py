@@ -17,4 +17,4 @@ class URLGetter:
             title = info['title']
             stream_url = info['url']
 
-        return stream_url, title
+        return stream_url, title 
