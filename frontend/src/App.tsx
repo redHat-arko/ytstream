@@ -3,6 +3,8 @@ import axios from 'axios'
 import { ThemeProvider } from "@/components/theme-provider"
 import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card"
 import { ModeToggle } from "@/components/mode-toggle"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
 
 interface AudioData {
   stream_url: string
@@ -38,24 +40,25 @@ function App() {
         <div className="max-w-md mx-auto">
           <Card className="bg-white dark:bg-gray-800">
             <CardHeader>
-              <h1 className="text-2xl font-bold text-center mb-2 text-gray-900 dark:text-white">YouTube Audio Player</h1>
+              <h1 className="text-2xl font-bold text-center mb-2 text-gray-900 dark:text-white">ytstream</h1>
               <ModeToggle />
             </CardHeader>
             <CardContent>
-              <input
-                type="text"
-                value={url}
-                onChange={(e) => setUrl(e.target.value)}
-                className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                placeholder="https://www.youtube.com/watch?v=..."
-              />
-              <button
-                onClick={handleFetchAudio}
-                disabled={loading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 mt-4"
-              >
-                {loading ? 'Loading...' : 'Get Audio'}
-              </button>
+              <div className="flex">
+                <Input
+                  value={url}
+                  onChange={(e) => setUrl(e.target.value)}
+                  className="mt-1 block w-full placeholder-gray-500 dark:placeholder-gray-400"
+                  placeholder="https://www.youtube.com/watch?v=..."
+                />
+                <Button
+                  onClick={handleFetchAudio}
+                  disabled={loading}
+                  className="flex items-center justify-center py-2 px-4 ml-2"
+                >
+                  <span className="text-lg">↵</span>
+                </Button>
+              </div>
               {error && (
                 <div className="mt-4 text-red-600 text-sm">
                   {error}
