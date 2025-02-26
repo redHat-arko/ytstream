@@ -11,9 +11,10 @@ interface AudioPlayerProps {
   error: string;
   queue: AudioData[];
   setQueue: React.Dispatch<React.SetStateAction<AudioData[]>>;
+  setAudioData: React.Dispatch<React.SetStateAction<AudioData | null>>;
 }
 
-const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioData, error, queue, setQueue }) => {
+const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioData, error, queue, setQueue, setAudioData }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -26,8 +27,11 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioData, error, queue, setQ
     if (queue.length > 0) {
       const nextTrack = queue[0];
       setQueue(queue.slice(1));
+      setAudioData(nextTrack);
       audioRef.current!.src = nextTrack.stream_url;
       audioRef.current!.play();
+    } else {
+      setAudioData(null);
     }
   };
 

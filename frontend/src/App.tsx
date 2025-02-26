@@ -51,7 +51,7 @@ function App() {
         </div>
         {(audioData || error) && (
           <div className="fixed bottom-10 left-0 right-0 max-w-md mx-auto">
-            <AudioPlayer audioData={audioData} error={error} queue={queue} setQueue={setQueue} />
+            <AudioPlayer audioData={audioData} error={error} queue={queue} setQueue={setQueue} setAudioData={setAudioData} />
           </div>
         )}
       </div>
