@@ -49,7 +49,7 @@ const Queue: React.FC<QueueProps> = ({ queue, setQueue, setAudioData }) => {
   return (
     <>
       {queue.length === 0 && !url && !showInput ? (
-        <Button onClick={() => setShowInput(true)}>
+        <Button onClick={() => setShowInput(true)} className='mt-4'>
           <Plus className="h-4 w-4" />
         </Button>
       ) : (
@@ -77,7 +77,7 @@ const Queue: React.FC<QueueProps> = ({ queue, setQueue, setAudioData }) => {
                     className="flex justify-between items-center hover:bg-accent hover:text-accent-foreground px-4 py-2"
                     onClick={() => jumpQueue(index)}
                   >
-                    <span>{item.title}</span>
+                    <span className="mr-4">{item.title}</span>
                     <Button 
                       onClick={(e) => { e.stopPropagation(); removeFromQueue(index); }} 
                       className="p-2"
