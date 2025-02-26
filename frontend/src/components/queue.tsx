@@ -63,6 +63,11 @@ const Queue: React.FC<QueueProps> = ({ queue, setQueue, setAudioData }) => {
                   onChange={(e) => setUrl(e.target.value)}
                   placeholder="Add URL to queue"
                   className="mr-2"
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      addToQueue();
+                    }
+                  }}
                 />
                 <Button onClick={addToQueue}>
                   <Plus className="h-4 w-4" />
