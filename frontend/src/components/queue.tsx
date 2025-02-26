@@ -12,9 +12,10 @@ interface AudioData {
 interface QueueProps {
   queue: AudioData[];
   setQueue: React.Dispatch<React.SetStateAction<AudioData[]>>;
+  setAudioData: React.Dispatch<React.SetStateAction<AudioData | null>>;
 }
 
-const Queue: React.FC<QueueProps> = ({ queue, setQueue }) => {
+const Queue: React.FC<QueueProps> = ({ queue, setQueue, setAudioData }) => {
   const [url, setUrl] = useState('')
 
   const addToQueue = async () => {
@@ -32,8 +33,10 @@ const Queue: React.FC<QueueProps> = ({ queue, setQueue }) => {
   }
 
   const removeFromQueue = (index: number) => {
+    const trackToPlay = queue[index]; // Get the track to play
     const updatedQueue = queue.filter((_, i) => i !== index);
     setQueue(updatedQueue);
+    setAudioData(trackToPlay); // Set the audio data to the selected track
   }
 
   return (
@@ -49,9 +52,9 @@ const Queue: React.FC<QueueProps> = ({ queue, setQueue }) => {
         <Button onClick={addToQueue} className="mb-4">Add to Queue</Button>
         <ul>
           {queue.map((item, index) => (
-            <li key={index} className="flex justify-between items-center">
+            <li key={index} className="flex justify-between items-center" onClick={() => removeFromQueue(index)}>
               <span>{item.title}</span>
-              <Button onClick={() => removeFromQueue(index)} variant="destructive">Remove</Button>
+              <Button onClick={(e) => { e.stopPropagation(); removeFromQueue(index); }} variant="destructive">Remove</Button>
             </li>
           ))}
         </ul>
