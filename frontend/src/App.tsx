@@ -42,11 +42,15 @@ function App() {
         </div>
         <h1 className="text-2xl font-bold text-center mb-8">ytstream</h1>
         <div className="max-w-md mx-auto">
-          <AudioInput url={url} setUrl={setUrl} handleFetchAudio={handleFetchAudio} loading={loading} />
-          {(audioData || error) && (
-            <AudioPlayer audioData={audioData} error={error} />
-          )}
+          <div>
+            <AudioInput url={url} setUrl={setUrl} handleFetchAudio={handleFetchAudio} loading={loading} />
+          </div>
         </div>
+        {(audioData || error) && (
+          <div className="fixed bottom-10 left-0 right-0 max-w-md mx-auto">
+            <AudioPlayer audioData={audioData} error={error} />
+          </div>
+        )}
       </div>
     </ThemeProvider>
   )
