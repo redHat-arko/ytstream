@@ -3,7 +3,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import axios from 'axios'
-import { Trash } from "lucide-react"
+import { Trash, Plus } from "lucide-react"
 
 interface AudioData {
   stream_url: string
@@ -48,14 +48,18 @@ const Queue: React.FC<QueueProps> = ({ queue, setQueue, setAudioData }) => {
   return (
     <Card>
       <CardContent>
-        <h2 className="text-lg font-semibold">Audio Queue</h2>
-        <Input
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          placeholder="Add URL to queue"
-          className="mb-2"
-        />
-        <Button onClick={addToQueue} className="mb-4">Add to Queue</Button>
+        <h2 className="text-lg font-semibold my-4">Queue</h2>
+        <div className="flex items-center mb-2">
+          <Input
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            placeholder="Add URL to queue"
+            className="mr-2"
+          />
+          <Button onClick={addToQueue}>
+            <Plus className="h-4 w-4" />
+          </Button>
+        </div>
         <ul>
           {queue.map((item, index) => (
             <li 
