@@ -18,6 +18,7 @@ interface QueueProps {
 
 const Queue: React.FC<QueueProps> = ({ queue, setQueue, setAudioData }) => {
   const [url, setUrl] = useState('')
+  const [showInput, setShowInput] = useState(false)
 
   const addToQueue = async () => {
     if (url) {
@@ -46,42 +47,52 @@ const Queue: React.FC<QueueProps> = ({ queue, setQueue, setAudioData }) => {
   }
 
   return (
-    <Card>
-      <CardContent>
-        <h2 className="text-lg font-semibold my-4">Queue</h2>
-        <div className="flex items-center mb-2">
-          <Input
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            placeholder="Add URL to queue"
-            className="mr-2"
-          />
-          <Button onClick={addToQueue}>
-            <Plus className="h-4 w-4" />
-          </Button>
-        </div>
-        <ul>
-          {queue.map((item, index) => (
-            <li 
-              key={index} 
-              className="flex justify-between items-center hover:bg-accent hover:text-accent-foreground"
-              onClick={() => jumpQueue(index)}
-            >
-              <span>{item.title}</span>
-              <Button 
-                onClick={(e) => { e.stopPropagation(); removeFromQueue(index); }} 
-                className="p-2"
-              >
-                <Trash className="h-4 w-4" />
-              </Button>
-            </li>
-          ))}
-        </ul>
-      </CardContent>
-      <CardFooter>
-        {/* Play Queue button removed */}
-      </CardFooter>
-    </Card>
+    <>
+      {queue.length === 0 && !url && !showInput ? (
+        <Button onClick={() => setShowInput(true)}>
+          <Plus className="h-4 w-4" />
+        </Button>
+      ) : (
+        <Card>
+          <CardContent>
+            <h2 className="text-lg font-semibold my-4">Queue</h2>
+            {showInput && (
+              <div className="flex items-center mb-2">
+                <Input
+                  value={url}
+                  onChange={(e) => setUrl(e.target.value)}
+                  placeholder="Add URL to queue"
+                  className="mr-2"
+                />
+                <Button onClick={addToQueue}>
+                  <Plus className="h-4 w-4" />
+                </Button>
+              </div>
+            )}
+            <ul>
+              {queue.map((item, index) => (
+                <li 
+                  key={index} 
+                  className="flex justify-between items-center hover:bg-accent hover:text-accent-foreground"
+                  onClick={() => jumpQueue(index)}
+                >
+                  <span>{item.title}</span>
+                  <Button 
+                    onClick={(e) => { e.stopPropagation(); removeFromQueue(index); }} 
+                    className="p-2"
+                  >
+                    <Trash className="h-4 w-4" />
+                  </Button>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+          <CardFooter>
+            {/* Play Queue button removed */}
+          </CardFooter>
+        </Card>
+      )}
+    </>
   )
 }
 
