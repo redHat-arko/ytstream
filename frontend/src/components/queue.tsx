@@ -69,11 +69,11 @@ const Queue: React.FC<QueueProps> = ({ queue, setQueue, setAudioData }) => {
                 </Button>
               </div>
             )}
-            <ul>
+            <ul className="mt-4">
               {queue.map((item, index) => (
                 <li 
                   key={index} 
-                  className="flex justify-between items-center hover:bg-accent hover:text-accent-foreground"
+                  className="flex justify-between items-center hover:bg-accent hover:text-accent-foreground mb-2 px-4 py-2"
                   onClick={() => jumpQueue(index)}
                 >
                   <span>{item.title}</span>
