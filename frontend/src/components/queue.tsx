@@ -57,7 +57,7 @@ const Queue: React.FC<QueueProps> = ({ queue, setQueue, setAudioData }) => {
           <CardContent>
             <h2 className="text-lg font-semibold my-4">Queue</h2>
             {showInput && (
-              <div className="flex items-center mb-2">
+              <div className="flex items-center mb-4">
                 <Input
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
@@ -69,8 +69,8 @@ const Queue: React.FC<QueueProps> = ({ queue, setQueue, setAudioData }) => {
                 </Button>
               </div>
             )}
-            <div className="max-h-60 overflow-y-auto">
-              <ul className="mt-4">
+            <div className="max-h-40 overflow-y-auto">
+              <ul>
                 {queue.map((item, index) => (
                   <li 
                     key={index} 
@@ -89,9 +89,6 @@ const Queue: React.FC<QueueProps> = ({ queue, setQueue, setAudioData }) => {
               </ul>
             </div>
           </CardContent>
-          <CardFooter>
-            {/* Play Queue button removed */}
-          </CardFooter>
         </Card>
       )}
     </>
