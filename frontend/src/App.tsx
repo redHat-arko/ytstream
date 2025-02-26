@@ -37,12 +37,15 @@ function App() {
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 relative">
+        <div className="flex justify-end mb-2">
+          <ModeToggle />
+        </div>
+        <h1 className="text-2xl font-bold text-center mb-8">ytstream</h1>
         <div className="max-w-md mx-auto">
           <Card>
             <CardHeader>
-              <h1 className="text-2xl font-bold text-center mb-2">ytstream</h1>
-              <ModeToggle />
+              {/* Removed ModeToggle from here */}
             </CardHeader>
             <CardContent>
               <div className="flex">
