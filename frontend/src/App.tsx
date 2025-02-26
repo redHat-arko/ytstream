@@ -47,7 +47,7 @@ function App() {
           <div>
             <AudioInput url={url} setUrl={setUrl} handleFetchAudio={handleFetchAudio} loading={loading} />
           </div>
-          <Queue setQueue={setQueue} />
+          <Queue queue={queue} setQueue={setQueue} />
         </div>
         {(audioData || error) && (
           <div className="fixed bottom-10 left-0 right-0 max-w-md mx-auto">

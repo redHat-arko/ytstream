@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -10,12 +10,12 @@ interface AudioData {
 }
 
 interface QueueProps {
+  queue: AudioData[];
   setQueue: React.Dispatch<React.SetStateAction<AudioData[]>>;
 }
 
-const Queue: React.FC<QueueProps> = ({ setQueue }) => {
+const Queue: React.FC<QueueProps> = ({ queue, setQueue }) => {
   const [url, setUrl] = useState('')
-  const [queue, setLocalQueue] = useState<AudioData[]>([])
 
   const addToQueue = async () => {
     if (url) {
@@ -23,7 +23,6 @@ const Queue: React.FC<QueueProps> = ({ setQueue }) => {
         const response = await axios.post('http://localhost:8000/api/get-audio', { url });
         const { stream_url, title } = response.data;
         const newQueue = [...queue, { stream_url, title }];
-        setLocalQueue(newQueue);
         setQueue(newQueue);
         setUrl('');
       } catch (error) {
@@ -34,7 +33,6 @@ const Queue: React.FC<QueueProps> = ({ setQueue }) => {
 
   const removeFromQueue = (index: number) => {
     const updatedQueue = queue.filter((_, i) => i !== index);
-    setLocalQueue(updatedQueue);
     setQueue(updatedQueue);
   }
 
