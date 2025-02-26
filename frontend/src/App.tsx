@@ -43,45 +43,49 @@ function App() {
         </div>
         <h1 className="text-2xl font-bold text-center mb-8">ytstream</h1>
         <div className="max-w-md mx-auto">
-          <Card>
-            <CardHeader>
-              {/* Removed ModeToggle from here */}
-            </CardHeader>
-            <CardContent>
-              <div className="flex">
-                <Input
-                  value={url}
-                  onChange={(e) => setUrl(e.target.value)}
-                  className="mt-1 block w-full"
-                  placeholder="https://www.youtube.com/watch?v=..."
-                />
-                <Button
-                  onClick={handleFetchAudio}
-                  disabled={loading}
-                  className="flex items-center justify-center py-2 px-4 ml-2"
-                >
-                  <span className="text-lg">↵</span>
-                </Button>
-              </div>
-              {error && (
-                <div className="mt-4 text-red-600 text-sm">
-                  {error}
-                </div>
+          <div className="flex mb-4">
+            <Input
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  handleFetchAudio()
+                }
+              }}
+              className="block w-full"
+              placeholder="https://www.youtube.com/watch?v=..."
+            />
+            <Button
+              onClick={handleFetchAudio}
+              disabled={loading}
+              className="flex items-center justify-center ml-2"
+            >
+              <span className="text-lg">↵</span>
+            </Button>
+          </div>
+          {(audioData || error) && (
+            <Card>
+              <CardContent>
+                {error && (
+                  <div className="mt-4 text-red-600 text-sm">
+                    {error}
+                  </div>
+                )}
+              </CardContent>
+              {audioData && (
+                <CardFooter>
+                  <h2 className="text-lg font-semibold mb-2">{audioData.title}</h2>
+                  <audio
+                    controls
+                    className="w-full"
+                    src={audioData.stream_url}
+                  >
+                    Your browser does not support the audio element.
+                  </audio>
+                </CardFooter>
               )}
-            </CardContent>
-            {audioData && (
-              <CardFooter>
-                <h2 className="text-lg font-semibold mb-2">{audioData.title}</h2>
-                <audio
-                  controls
-                  className="w-full"
-                  src={audioData.stream_url}
-                >
-                  Your browser does not support the audio element.
-                </audio>
-              </CardFooter>
-            )}
-          </Card>
+            </Card>
+          )}
         </div>
       </div>
     </ThemeProvider>
