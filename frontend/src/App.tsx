@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import './App.css'
 import axios from 'axios'
-import { Button } from './components/ui/button'
-import { Input } from "@/components/ui/input"
-import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card"
 import { ThemeProvider } from "@/components/theme-provider"
 import { ModeToggle } from './components/mode-toggle'
+import AudioInput from './components/audio-input'
+import AudioPlayer from './components/audio-player'
 
 interface AudioData {
   stream_url: string
@@ -43,48 +42,9 @@ function App() {
         </div>
         <h1 className="text-2xl font-bold text-center mb-8">ytstream</h1>
         <div className="max-w-md mx-auto">
-          <div className="flex mb-4">
-            <Input
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  handleFetchAudio()
-                }
-              }}
-              className="block w-full"
-              placeholder="https://www.youtube.com/watch?v=..."
-            />
-            <Button
-              onClick={handleFetchAudio}
-              disabled={loading}
-              className="flex items-center justify-center ml-2"
-            >
-              <span className="text-lg">↵</span>
-            </Button>
-          </div>
+          <AudioInput url={url} setUrl={setUrl} handleFetchAudio={handleFetchAudio} loading={loading} />
           {(audioData || error) && (
-            <Card>
-              <CardContent>
-                {error && (
-                  <div className="mt-4 text-red-600 text-sm">
-                    {error}
-                  </div>
-                )}
-              </CardContent>
-              {audioData && (
-                <CardFooter>
-                  <h2 className="text-lg font-semibold mb-2">{audioData.title}</h2>
-                  <audio
-                    controls
-                    className="w-full"
-                    src={audioData.stream_url}
-                  >
-                    Your browser does not support the audio element.
-                  </audio>
-                </CardFooter>
-              )}
-            </Card>
+            <AudioPlayer audioData={audioData} error={error} />
           )}
         </div>
       </div>
