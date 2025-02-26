@@ -9,16 +9,22 @@ interface AudioData {
   title: string
 }
 
-const Queue: React.FC = () => {
+interface QueueProps {
+  setQueue: React.Dispatch<React.SetStateAction<AudioData[]>>;
+}
+
+const Queue: React.FC<QueueProps> = ({ setQueue }) => {
   const [url, setUrl] = useState('')
-  const [queue, setQueue] = useState<AudioData[]>([])
+  const [queue, setLocalQueue] = useState<AudioData[]>([])
 
   const addToQueue = async () => {
     if (url) {
       try {
         const response = await axios.post('http://localhost:8000/api/get-audio', { url });
         const { stream_url, title } = response.data;
-        setQueue([...queue, { stream_url, title }]);
+        const newQueue = [...queue, { stream_url, title }];
+        setLocalQueue(newQueue);
+        setQueue(newQueue);
         setUrl('');
       } catch (error) {
         console.error('Error fetching audio:', error);
@@ -27,7 +33,9 @@ const Queue: React.FC = () => {
   }
 
   const removeFromQueue = (index: number) => {
-    setQueue(queue.filter((_, i) => i !== index))
+    const updatedQueue = queue.filter((_, i) => i !== index);
+    setLocalQueue(updatedQueue);
+    setQueue(updatedQueue);
   }
 
   return (

@@ -9,9 +9,11 @@ interface AudioData {
 interface AudioPlayerProps {
   audioData: AudioData | null;
   error: string;
+  queue: AudioData[];
+  setQueue: React.Dispatch<React.SetStateAction<AudioData[]>>;
 }
 
-const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioData, error }) => {
+const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioData, error, queue, setQueue }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -19,6 +21,15 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioData, error }) => {
       audioRef.current.play();
     }
   }, [audioData]);
+
+  const handleEnded = () => {
+    if (queue.length > 0) {
+      const nextTrack = queue[0];
+      setQueue(queue.slice(1));
+      audioRef.current!.src = nextTrack.stream_url;
+      audioRef.current!.play();
+    }
+  };
 
   return (
     <Card>
@@ -39,6 +50,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioData, error }) => {
             controls
             className="w-full"
             src={audioData.stream_url}
+            onEnded={handleEnded}
           >
             Your browser does not support the audio element.
           </audio>
