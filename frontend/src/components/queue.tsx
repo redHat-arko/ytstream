@@ -69,23 +69,25 @@ const Queue: React.FC<QueueProps> = ({ queue, setQueue, setAudioData }) => {
                 </Button>
               </div>
             )}
-            <ul className="mt-4">
-              {queue.map((item, index) => (
-                <li 
-                  key={index} 
-                  className="flex justify-between items-center hover:bg-accent hover:text-accent-foreground mb-2 px-4 py-2"
-                  onClick={() => jumpQueue(index)}
-                >
-                  <span>{item.title}</span>
-                  <Button 
-                    onClick={(e) => { e.stopPropagation(); removeFromQueue(index); }} 
-                    className="p-2"
+            <div className="max-h-60 overflow-y-auto">
+              <ul className="mt-4">
+                {queue.map((item, index) => (
+                  <li 
+                    key={index} 
+                    className="flex justify-between items-center hover:bg-accent hover:text-accent-foreground px-4 py-2"
+                    onClick={() => jumpQueue(index)}
                   >
-                    <Trash className="h-4 w-4" />
-                  </Button>
-                </li>
-              ))}
-            </ul>
+                    <span>{item.title}</span>
+                    <Button 
+                      onClick={(e) => { e.stopPropagation(); removeFromQueue(index); }} 
+                      className="p-2"
+                    >
+                      <Trash className="h-4 w-4" />
+                    </Button>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </CardContent>
           <CardFooter>
             {/* Play Queue button removed */}
