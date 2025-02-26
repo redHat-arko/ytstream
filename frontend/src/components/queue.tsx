@@ -2,15 +2,27 @@ import React, { useState } from 'react'
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import axios from 'axios'
+
+interface AudioData {
+  stream_url: string
+  title: string
+}
 
 const Queue: React.FC = () => {
   const [url, setUrl] = useState('')
-  const [queue, setQueue] = useState<string[]>([])
+  const [queue, setQueue] = useState<AudioData[]>([])
 
-  const addToQueue = () => {
+  const addToQueue = async () => {
     if (url) {
-      setQueue([...queue, url])
-      setUrl('')
+      try {
+        const response = await axios.post('http://localhost:8000/api/get-audio', { url });
+        const { stream_url, title } = response.data;
+        setQueue([...queue, { stream_url, title }]);
+        setUrl('');
+      } catch (error) {
+        console.error('Error fetching audio:', error);
+      }
     }
   }
 
@@ -32,14 +44,14 @@ const Queue: React.FC = () => {
         <ul>
           {queue.map((item, index) => (
             <li key={index} className="flex justify-between items-center">
-              <span>{item}</span>
+              <span>{item.title}</span>
               <Button onClick={() => removeFromQueue(index)} variant="destructive">Remove</Button>
             </li>
           ))}
         </ul>
       </CardContent>
       <CardFooter>
-        <Button onClick={() => console.log(queue)}>Play Queue</Button>
+        {/* Play Queue button removed */}
       </CardFooter>
     </Card>
   )

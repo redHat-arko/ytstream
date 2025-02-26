@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 
 interface AudioData {
@@ -12,6 +12,14 @@ interface AudioPlayerProps {
 }
 
 const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioData, error }) => {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    if (audioRef.current && audioData) {
+      audioRef.current.play();
+    }
+  }, [audioData]);
+
   return (
     <Card>
       <CardContent>
@@ -27,6 +35,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioData, error }) => {
       {audioData && (
         <CardFooter>
           <audio
+            ref={audioRef}
             controls
             className="w-full"
             src={audioData.stream_url}
