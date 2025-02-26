@@ -33,6 +33,11 @@ const Queue: React.FC<QueueProps> = ({ queue, setQueue, setAudioData }) => {
   }
 
   const removeFromQueue = (index: number) => {
+    const updatedQueue = queue.filter((_, i) => i !== index);
+    setQueue(updatedQueue);
+  }
+
+  const jumpQueue = (index: number) => {
     const trackToPlay = queue[index]; // Get the track to play
     const updatedQueue = queue.filter((_, i) => i !== index);
     setQueue(updatedQueue);
@@ -52,7 +57,7 @@ const Queue: React.FC<QueueProps> = ({ queue, setQueue, setAudioData }) => {
         <Button onClick={addToQueue} className="mb-4">Add to Queue</Button>
         <ul>
           {queue.map((item, index) => (
-            <li key={index} className="flex justify-between items-center" onClick={() => removeFromQueue(index)}>
+            <li key={index} className="flex justify-between items-center" onClick={() => jumpQueue(index)}>
               <span>{item.title}</span>
               <Button onClick={(e) => { e.stopPropagation(); removeFromQueue(index); }} variant="destructive">Remove</Button>
             </li>
