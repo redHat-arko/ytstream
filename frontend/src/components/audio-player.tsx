@@ -20,10 +20,12 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioData, error }) => {
             {error}
           </div>
         )}
+        {audioData && (
+          <h2 className="text-lg font-semibold mt-6">{audioData.title}</h2>
+        )}
       </CardContent>
       {audioData && (
         <CardFooter>
-          <h2 className="text-lg font-semibold mb-2">{audioData.title}</h2>
           <audio
             controls
             className="w-full"
