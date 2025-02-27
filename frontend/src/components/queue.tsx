@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import axios from 'axios'
 import { Trash, Plus } from "lucide-react"
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 interface AudioData {
   stream_url: string
@@ -74,7 +75,7 @@ const Queue: React.FC<QueueProps> = ({ queue, setQueue, setAudioData, setCurrent
                 </Button>
               </div>
             )}
-            <div className="max-h-40 overflow-y-auto">
+            <ScrollArea className="max-h-40 overflow-y-auto rounded-md p-2">
               <ul>
                 {queue.map((item, index) => (
                   <li 
@@ -92,7 +93,7 @@ const Queue: React.FC<QueueProps> = ({ queue, setQueue, setAudioData, setCurrent
                   </li>
                 ))}
               </ul>
-            </div>
+            </ScrollArea>
           </CardContent>
         </Card>
       )}
