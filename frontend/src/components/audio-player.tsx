@@ -46,7 +46,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioData, error, queue, setQ
           </div>
         )}
         {audioData && (
-          <h2 className="text-lg font-semibold mt-6">{audioData.title}</h2>
+          <h2 className="text-lg font-semibold mt-6 text-center">{audioData.title}</h2>
         )}
       </CardContent>
       {audioData && (
