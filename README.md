@@ -18,7 +18,7 @@ What's more: you can queue audio tracks to play or even jump to any track in the
 * Audio download support
 * Theme switching (light/dark/system)
 
-Previously a CLI desktop app, YTStream has now migrated to the web!
+![YTStream](frontend/src/assets/ytstream-play.png)
 
 ## Using the App
 
@@ -36,14 +36,14 @@ To run the app:
    cd backend
    ```
 
-3. Activate the virtual environment (optional)
+3. Activate the virtual environment (optional):
 
-   Unix-based systems:
+   Unix-based systems
    ```bash
    source venv/bin/activate
    ```
    
-   Windows:
+   Windows
    ```bash
    venv\Scripts\activate
    ```
