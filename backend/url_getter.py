@@ -1,6 +1,5 @@
 import yt_dlp
 
-
 class URLGetter:
     def __init__(self, url):
         self.url = url
