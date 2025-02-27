@@ -70,3 +70,7 @@ To run the app:
    ```
 
 8. Open your browser and navigate to `http://localhost:5173` to access the app.
+
+## Releases
+
+Find the latest release [here](https://github.com/redHat-arko/ytstream/releases/tag/v2.0).
