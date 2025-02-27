@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 
 interface AudioData {
@@ -16,23 +16,30 @@ interface AudioPlayerProps {
 
 const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioData, error, queue, setQueue, setAudioData }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [currentTrackIndex, setCurrentTrackIndex] = useState(-1);
 
   useEffect(() => {
-    if (audioRef.current && audioData) {
-      audioRef.current.play();
+    if (audioData) {
+      audioRef.current!.src = audioData.stream_url;
+      audioRef.current!.play();
     }
   }, [audioData]);
 
   const handleEnded = () => {
-    if (queue.length > 0) {
-      const nextTrack = queue[0];
-      setQueue(queue.slice(1));
-      setAudioData(nextTrack);
-      audioRef.current!.src = nextTrack.stream_url;
-      audioRef.current!.play();
+    if (currentTrackIndex < queue.length - 1) {
+      const nextIndex = currentTrackIndex + 1;
+      setCurrentTrackIndex(nextIndex);
+      setAudioData(queue[nextIndex]);
     } else {
+      setCurrentTrackIndex(-1);
       setAudioData(null);
     }
+  };
+
+  const jumpQueue = (index: number) => {
+    setCurrentTrackIndex(index);
+    const trackToPlay = queue[index];
+    setAudioData(trackToPlay);
   };
 
   return (

@@ -41,8 +41,8 @@ const Queue: React.FC<QueueProps> = ({ queue, setQueue, setAudioData }) => {
 
   const jumpQueue = (index: number) => {
     const trackToPlay = queue[index]; // Get the track to play
-    const updatedQueue = queue.filter((_, i) => i !== index);
-    setQueue(updatedQueue);
+    // const updatedQueue = queue.filter((_, i) => i !== index);
+    // setQueue(updatedQueue);
     setAudioData(trackToPlay); // Set the audio data to the selected track
   }
 
