@@ -18,6 +18,7 @@ function App() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [queue, setQueue] = useState<AudioData[]>([])
+  const [currentTrackIndex, setCurrentTrackIndex] = useState(-1)
 
   const handleFetchAudio = async () => {
     setLoading(true)
@@ -48,12 +49,25 @@ function App() {
             <AudioInput url={url} setUrl={setUrl} handleFetchAudio={handleFetchAudio} loading={loading} />
           </div>
           <div className='mt-7'>
-            <Queue queue={queue} setQueue={setQueue} setAudioData={setAudioData} />
+            <Queue 
+              queue={queue} 
+              setQueue={setQueue} 
+              setAudioData={setAudioData} 
+              setCurrentTrackIndex={setCurrentTrackIndex}
+            />
           </div>
         </div>
         {(audioData || error) && (
           <div className="fixed bottom-10 left-0 right-0 max-w-md mx-auto">
-            <AudioPlayer audioData={audioData} error={error} queue={queue} setQueue={setQueue} setAudioData={setAudioData} />
+            <AudioPlayer 
+              audioData={audioData} 
+              error={error} 
+              queue={queue} 
+              setQueue={setQueue} 
+              setAudioData={setAudioData} 
+              currentTrackIndex={currentTrackIndex}
+              setCurrentTrackIndex={setCurrentTrackIndex}
+            />
           </div>
         )}
       </div>

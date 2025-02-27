@@ -14,9 +14,10 @@ interface QueueProps {
   queue: AudioData[];
   setQueue: React.Dispatch<React.SetStateAction<AudioData[]>>;
   setAudioData: React.Dispatch<React.SetStateAction<AudioData | null>>;
+  setCurrentTrackIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const Queue: React.FC<QueueProps> = ({ queue, setQueue, setAudioData }) => {
+const Queue: React.FC<QueueProps> = ({ queue, setQueue, setAudioData, setCurrentTrackIndex }) => {
   const [url, setUrl] = useState('')
   const [showInput, setShowInput] = useState(false)
 
@@ -41,8 +42,7 @@ const Queue: React.FC<QueueProps> = ({ queue, setQueue, setAudioData }) => {
 
   const jumpQueue = (index: number) => {
     const trackToPlay = queue[index]; // Get the track to play
-    // const updatedQueue = queue.filter((_, i) => i !== index);
-    // setQueue(updatedQueue);
+    setCurrentTrackIndex(index); // Update the current track index
     setAudioData(trackToPlay); // Set the audio data to the selected track
   }
 

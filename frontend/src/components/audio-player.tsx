@@ -12,11 +12,12 @@ interface AudioPlayerProps {
   queue: AudioData[];
   setQueue: React.Dispatch<React.SetStateAction<AudioData[]>>;
   setAudioData: React.Dispatch<React.SetStateAction<AudioData | null>>;
+  currentTrackIndex: number;
+  setCurrentTrackIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioData, error, queue, setQueue, setAudioData }) => {
+const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioData, error, queue, setQueue, setAudioData, currentTrackIndex, setCurrentTrackIndex }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [currentTrackIndex, setCurrentTrackIndex] = useState(-1);
 
   useEffect(() => {
     if (audioData) {
@@ -34,12 +35,6 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioData, error, queue, setQ
       setCurrentTrackIndex(-1);
       setAudioData(null);
     }
-  };
-
-  const jumpQueue = (index: number) => {
-    setCurrentTrackIndex(index);
-    const trackToPlay = queue[index];
-    setAudioData(trackToPlay);
   };
 
   return (
@@ -71,4 +66,4 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioData, error, queue, setQ
   )
 }
 
-export default AudioPlayer 
+export default AudioPlayer
